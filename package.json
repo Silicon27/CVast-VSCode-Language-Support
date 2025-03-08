@@ -1,0 +1,25 @@
+{
+  "name": "cvast-language-support",
+  "displayName": "cvast-language-support",
+  "description": "Support for the CVast Programming Languge",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.98.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "cvast",
+      "aliases": ["CVast", "cvast"],
+      "extensions": [".cv",".cvast"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "cvast",
+      "scopeName": "source.cvast",
+      "path": "./syntaxes/cvast.tmLanguage.json"
+    }]
+  }
+}

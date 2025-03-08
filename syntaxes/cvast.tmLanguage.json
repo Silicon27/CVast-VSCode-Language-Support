@@ -1,0 +1,114 @@
+{
+	"scopeName": "source.cvast",
+	"name": "CVast",
+	"patterns": [
+	  {"include": "#keywords"},
+	  {"include": "#types"},
+	  {"include": "#functions"},
+	  {"include": "#variables"},
+	  {"include": "#strings"},
+	  {"include": "#symbols"},
+	  {"include": "#comments"},
+	  {"include": "#namespaces"}
+	],
+	"repository": {
+	  "keywords": {
+		"patterns": [{
+		  "name": "keyword.control.cvast",
+		  "match": "\\b(fn|var|merge|as|extern|if|else|while|return|const|runtime|static)\\b"
+		}, {
+		  "name": "keyword.operator.cvast",
+		  "match": "(->|::|==|!=|<=|>=|=|\\+|-|\\*|/|:|@|#|\\$|%|&|\\?|!|<|>|\\||\\^|~)"
+		}]
+	  },
+	  "types": {
+		"patterns": [{
+		  "name": "storage.type.cvast",
+		  "match": "\\b(int|float|double|char|string|bool|void)\\b"
+		}]
+	  },
+	  "functions": {
+		"patterns": [{
+		  "name": "meta.function.cvast",
+		  "begin": "\\b(fn)\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
+		  "beginCaptures": {
+			"1": {"name": "keyword.function.cvast"},
+			"2": {"name": "entity.name.function.cvast"}
+		  },
+		  "end": "(?=\\{|;)",
+		  "patterns": [
+			{"include": "#parameters"},
+			{
+			  "name": "keyword.operator.return.cvast",
+			  "match": "->",
+			  "push": [{
+				"name": "storage.type.return.cvast",
+				"match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b",
+				"pop": true
+			  }]
+			}
+		  ]
+		}]
+	  },
+	  "parameters": {
+		"patterns": [{
+		  "name": "meta.parameter.cvast",
+		  "match": "([a-zA-Z_][a-zA-Z0-9_]*)\\s*(:)\\s*([a-zA-Z_][a-zA-Z0-9_]*)",
+		  "captures": {
+			"1": {"name": "variable.parameter.cvast"},
+			"2": {"name": "punctuation.separator.cvast"},
+			"3": {"name": "storage.type.cvast"}
+		  }
+		}]
+	  },
+	  "variables": {
+		"patterns": [{
+		  "name": "meta.variable.cvast",
+		  "match": "\\b(var)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*(:)\\s*([a-zA-Z_][a-zA-Z0-9_]*)",
+		  "captures": {
+			"1": {"name": "keyword.declaration.cvast"},
+			"2": {"name": "variable.other.cvast"},
+			"3": {"name": "punctuation.separator.cvast"},
+			"4": {"name": "storage.type.cvast"}
+		  }
+		}]
+	  },
+	  "strings": {
+		"patterns": [{
+		  "name": "string.quoted.double.cvast",
+		  "begin": "\"",
+		  "end": "\"",
+		  "patterns": [{
+			"name": "constant.character.escape.cvast",
+			"match": "\\\\."
+		  }]
+		}]
+	  },
+	  "symbols": {
+		"patterns": [{
+		  "name": "punctuation.section.scope.cvast",
+		  "match": "[\\{\\}\\<\\(\\),;]"
+		}]
+	  },
+	  "comments": {
+		"patterns": [{
+		  "name": "comment.line.double-slash.cvast",
+		  "match": "//.*"
+		}, {
+		  "name": "comment.block.c.cvast",
+		  "begin": "/\\*",
+		  "end": "\\*/"
+		}]
+	  },
+	  "namespaces": {
+		"patterns": [{
+		  "name": "meta.namespace.cvast",
+		  "match": "([a-zA-Z_][a-zA-Z0-9_]*)(::)",
+		  "captures": {
+			"1": {"name": "entity.name.namespace.cvast"},
+			"2": {"name": "keyword.operator.namespace.cvast"}
+		  }
+		}]
+	  }
+	}
+  }
