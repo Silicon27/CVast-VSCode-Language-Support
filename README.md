@@ -1,6 +1,6 @@
 # CVast Language Support 
 
-![CVast Logo](images/logo.png) <!-- Add your logo here -->
+![CVast Logo](icon.png) <!-- Add your logo here -->
 
 VS Code extension for the CVast programming language with syntax highlighting, error checking, and language server support.
 
