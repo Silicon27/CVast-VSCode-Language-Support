@@ -10,11 +10,22 @@
     "Programming Languages"
   ],
   "contributes": {
+    "iconThemes": [
+      {
+        "id": "cvast-icons",
+        "label": "CVast Icons",
+        "path": "./icons/cvast-icon-theme.json"
+      }
+    ],
     "languages": [{
       "id": "cvast",
       "aliases": ["CVast", "cvast"],
       "extensions": [".cv",".cvast"],
-      "configuration": "./language-configuration.json"
+      "configuration": "./language-configuration.json",
+      "icon": {
+        "light": "./icons/cvast-file-icon.svg",
+        "dark": "./icons/cvast-file-icon.svg"
+      }
     }],
     "grammars": [{
       "language": "cvast",

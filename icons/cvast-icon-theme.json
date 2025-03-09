@@ -1,0 +1,11 @@
+{
+    "iconDefinitions": {
+      "_cvast": {
+        "iconPath": "cvast-file-icon-transparent.svg"
+      }
+    },
+    "fileExtensions": {
+      "cv": "_cvast",
+      "cvast": "_cvast"
+    }
+  }
